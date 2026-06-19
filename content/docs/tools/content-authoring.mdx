@@ -1,0 +1,67 @@
+---
+title: Content Authoring
+description: Use the content-authoring skill to create governance documents tailored to your organization's size, industry, and regulatory context.
+---
+
+The **content-authoring** skill helps you create governance documents from scratch. Rather than copying a generic template and editing it, the skill asks about your organization and produces a document that fits your specific context.
+
+## Supported Document Types
+
+| Document | What it produces |
+|----------|-----------------|
+| AI governance charter | Mandate, scope, authority, and operating principles for your council |
+| AI principles statement | Organizational values and commitments for responsible AI use |
+| Acceptable use policy | Rules for how employees can and cannot use AI tools |
+| Roles and membership | Who sits on the council, their responsibilities, and how members rotate |
+| Meeting and decision-making structure | Cadence, agenda templates, quorum rules, and decision rights |
+| Risk tiering framework | Classification tiers customized to your risk appetite and regulatory environment |
+| Use case registration form | Intake form for teams to submit AI use cases for review |
+| Escalation paths | When and how issues move from champions to the council to executives |
+
+## How It Works
+
+When you ask for a governance document, the skill follows a consistent pattern:
+
+1. **Asks what you need.** If you haven't specified a document type, it presents the options above.
+2. **Gathers context.** It asks about your organization: size, industry, regulatory environment, existing governance maturity, and specific concerns. It does not ask everything at once. Expect two or three questions to start, with follow-ups based on your answers.
+3. **Drafts the document.** The draft is tailored to your answers. A charter for a 50-person startup looks different from one for a 10,000-person bank.
+4. **Iterates.** You review the draft and request changes: adjust scope, change tone, add sections, align with a specific regulation.
+5. **Saves.** Once you are satisfied, it writes the document to a location you choose.
+
+## Example Prompts
+
+Start broad or specific. The skill adapts either way.
+
+**Broad:**
+> "I need governance documents for a new AI Council."
+
+The skill will ask which document to start with and gather context from there.
+
+**Specific:**
+> "Draft an acceptable use policy for generative AI tools at a 200-person financial services firm that needs to comply with SR 11-7."
+
+The more context you provide upfront, the fewer questions the skill needs to ask.
+
+**Iterative:**
+> "Make the tone more formal. This will go to our board of directors."
+
+> "Add a section on shadow AI and unsanctioned tool use."
+
+> "Align the principles with the OECD AI Principles."
+
+## Tips for Better Results
+
+**Provide industry and regulatory context.** A healthcare company subject to HIPAA produces different documents than a tech company with no sector-specific regulation. Mentioning your regulatory environment upfront saves a round of questions.
+
+**Specify the audience.** Documents for the board read differently from documents for engineering teams. Tell the skill who will read the final product.
+
+**Start with the charter.** If you are building a council from scratch, the charter establishes scope and authority that other documents reference. The skill can then use that charter as context for subsequent documents.
+
+**Iterate on sections, not the whole document.** If one section needs work but the rest is fine, ask the skill to revise just that section rather than regenerating everything.
+
+## Related Pages
+
+- [Charter](/docs/foundation/charter): The toolkit's guidance on what a charter should contain
+- [Principles](/docs/foundation/principles): How to define your organization's AI principles
+- [Roles and Membership](/docs/foundation/roles-and-membership): Guidance on council composition
+- [Risk Tiering](/docs/intake-and-triage/risk-tiering): The four-tier risk model the skill draws from

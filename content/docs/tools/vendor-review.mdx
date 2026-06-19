@@ -1,0 +1,111 @@
+---
+title: Vendor Review
+description: Use the vendor-review skill to evaluate AI vendors against your governance standards with structured assessments and actionable recommendations.
+---
+
+The **vendor-review** skill evaluates AI vendors and products against governance standards. It produces a structured assessment report with pass/fail ratings, a risk tier assignment, and specific recommendations for what to ask the vendor or require before approval.
+
+## How It Works
+
+1. **You describe the vendor.** Provide whatever you have: a product name, vendor documentation, a privacy policy, marketing materials, or just a conversational description.
+2. **The skill loads your standards.** It checks for custom standards first (your file or MCP source), then falls back to built-in references.
+3. **It maps vendor details against each checklist item.** Every item gets a status: pass, fail, or unknown.
+4. **It assigns a risk tier.** Based on the use case characteristics, not just the vendor's claims.
+5. **It produces a report.** Organized by category with gaps identified and actionable next steps.
+
+## The Assessment Report
+
+The report includes these sections:
+
+### Vendor summary
+Name, product, purpose, and how you intend to use it.
+
+### Standards source
+Which standards were used: your custom file, an MCP source, or the built-in references. This is always disclosed so you know what the assessment is measured against.
+
+### Checklist results
+Each item organized by category:
+
+- **Transparency and documentation.** Model cards, training data disclosure, bias testing, sub-processor transparency.
+- **Data practices.** Storage locations, training data use, opt-out rights, retention policies, data subject rights.
+- **Security.** Certifications, adversarial testing, vulnerability disclosure, incident response.
+- **Contractual.** Audit rights, liability terms, exit terms, service levels, model change provisions.
+
+### Risk tier
+A tier assignment (1 through 4) with reasoning. The skill explains which factors drove the tier and what could move it higher or lower.
+
+### Gaps and concerns
+Every item marked "unknown" or "fail" is listed with an explanation of what is missing or unmet.
+
+### Recommendations
+Specific, actionable next steps: exact questions to ask the vendor, requirements to impose, contract terms to negotiate, and follow-up reviews to schedule.
+
+## Standards Resolution
+
+The skill checks three sources in priority order:
+
+### 1. Your standards file
+Point to a Markdown file with your organization's evaluation criteria:
+
+> "Review Acme AI using our standards in ./company-standards.md"
+
+Your file can use any structure. The skill adapts to whatever format you provide: checklists, prose requirements, tables, or a mix.
+
+### 2. MCP sources
+If your organization stores policies in Confluence, SharePoint, or another system accessible through an MCP server, reference it directly:
+
+> "Evaluate this vendor against our AI governance policy in Confluence"
+
+This requires an MCP server configured in your Claude Code environment.
+
+### 3. Built-in references
+When no custom standards are provided, the skill uses its built-in reference files derived from:
+
+- [NIST AI RMF](/docs/standards-and-regulations/nist-ai-rmf) (risk management lifecycle)
+- [ISO 42001](/docs/standards-and-regulations/iso-42001) (AI management system controls)
+- [EU AI Act](/docs/standards-and-regulations/eu-ai-act) (regulatory obligations for deployers)
+- OWASP Top 10 for LLMs (security risks)
+
+## Example Prompts
+
+**Basic evaluation:**
+> "Evaluate Microsoft Copilot for our organization."
+
+**With custom standards:**
+> "Review this vendor using our standards in ./our-ai-policy.md"
+
+**With context:**
+> "We're considering Acme AI's resume screening tool for our HR team. We're a 2,000-person company in financial services. Evaluate it."
+
+**With vendor docs:**
+> "Here's the vendor's security whitepaper and privacy policy. Evaluate them against our standards."
+
+**Follow-up after initial report:**
+> "The vendor confirmed they don't use customer data for training. Update the assessment."
+
+## Tips for Better Results
+
+**Provide the intended use case.** The risk tier depends on how you plan to use the tool, not just what the tool does. "Internal developer productivity" and "customer-facing loan decisions" produce very different assessments for the same vendor.
+
+**Share vendor documentation when you have it.** The more the skill knows about the vendor, the fewer items end up as "unknown." Privacy policies, security whitepapers, and model cards all help.
+
+**Use your own standards.** The built-in references are a solid starting point, but your organization's specific requirements (data residency, sector regulations, internal policies) produce a more relevant assessment.
+
+**Iterate.** After the initial report, you can update it with new information, re-evaluate specific sections, or ask for deeper analysis on particular categories.
+
+## Common Vendor Scenarios
+
+| Scenario | What to tell the skill |
+|----------|----------------------|
+| Enterprise copilot (Copilot, Gemini) | Specify whether it connects to sensitive data sources. This changes the tier. |
+| Embedded AI features (Salesforce Einstein) | Clarify which features are enabled. Assess the features, not the platform. |
+| Foundation model API (OpenAI, Anthropic) | Assess each application built on the API separately, not just the API access. |
+| AI in HR tools (resume screening) | Always mention that it affects access to opportunities. This triggers Tier 3. |
+| Free tier or trial | Flag shadow AI risk. Note the different terms of service compared to enterprise agreements. |
+
+## Related Pages
+
+- [Governing Purchased AI](/docs/intake-and-triage/vendor-checklist): The full vendor governance lifecycle
+- [Risk Tiering](/docs/intake-and-triage/risk-tiering): How risk tiers are assigned
+- [Security Review](/docs/review-and-assurance/security-review): AI-specific security criteria
+- [Impact Assessments](/docs/review-and-assurance/impact-assessments): The assessment template for high-risk cases
