@@ -1,0 +1,67 @@
+---
+title: Claude Plugin
+description: Install the AI Council Toolkit plugin for Claude Code to generate governance documents and evaluate AI vendors from your terminal.
+---
+
+The AI Council Toolkit is available as a **Claude Code plugin**. Once installed, Claude can help you draft governance documents tailored to your organization and evaluate AI vendors against your standards, all from within your development environment.
+
+## What the Plugin Provides
+
+The plugin includes two skills:
+
+| Skill | Purpose |
+|-------|---------|
+| **content-authoring** | Create governance documents (charters, policies, principles, risk frameworks) tailored to your organization's size, industry, and regulatory context |
+| **vendor-review** | Evaluate AI vendors against governance standards with a structured assessment report covering transparency, data practices, security, and contractual terms |
+
+## Installation
+
+Install from the Claude Code marketplace:
+
+```bash
+claude plugin install ai-council-toolkit
+```
+
+Or install directly from GitHub:
+
+```bash
+claude plugin install RickCraig/ai-council-toolkit-plugin
+```
+
+## Usage
+
+### Creating governance documents
+
+Ask Claude to create any governance document. The content-authoring skill will gather context about your organization before drafting.
+
+Example prompts:
+
+- "Help me create an AI governance charter for a 500-person healthcare company."
+- "Draft an acceptable use policy for generative AI tools."
+- "Create a roles and membership definition for our AI Council."
+
+Supported document types: charters, principles statements, acceptable use policies, roles and membership definitions, meeting structures, [risk tiering](/docs/intake-and-triage/risk-tiering) frameworks, [use case registration](/docs/intake-and-triage/use-case-registration) forms, and escalation paths.
+
+### Evaluating vendors
+
+Ask Claude to review any AI vendor or product. The vendor-review skill produces a structured assessment with pass/fail/unknown ratings for each checklist item, a risk tier assignment, and actionable recommendations.
+
+Example prompts:
+
+- "Evaluate Microsoft Copilot for our organization."
+- "Review this vendor's AI tool using our standards in ./company-standards.md."
+- "Do due diligence on Acme AI's resume screening product."
+
+## Using Your Own Standards
+
+The vendor-review skill checks for standards in this order:
+
+1. **Your standards file.** Point to a local Markdown file (e.g., `./company-standards.md`) and the skill uses it as the primary evaluation criteria.
+2. **MCP sources.** If your organization stores policies in Confluence, SharePoint, or another system accessible through MCP, the skill can pull standards from there.
+3. **Built-in references.** When no custom standards are provided, the plugin falls back to its built-in reference files derived from [NIST AI RMF](/docs/standards-and-regulations/nist-ai-rmf), [ISO 42001](/docs/standards-and-regulations/iso-42001), [EU AI Act](/docs/standards-and-regulations/eu-ai-act), and [OWASP](https://owasp.org/www-project-top-10-for-large-language-model-applications/).
+
+This layered approach means the plugin works out of the box but adapts to your organization's specific policies when you provide them.
+
+## Source Code
+
+The plugin is open source and available on GitHub: [RickCraig/ai-council-toolkit-plugin](https://github.com/RickCraig/ai-council-toolkit-plugin).
